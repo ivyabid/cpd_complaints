@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CPDP Predictions</title>
+  <style>
+  body{
+    font-family: sans-serif;
+    background-color: cornflowerblue;
+  }
+  .button {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
+  .criteria {
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 10px 10px 0px #eee;
+    text-align: left;
+    width: 600px;
+    margin: auto;
+    background-color: white;
+  }
+  </style>
+
+</head>
+
+<body align="center">
+
+  <h2>Fill in the criteria for your complaint</h2>
+
+  <form action="/predict_complaint/" method="post">
+
+    <div class="criteria">
+
+      How many witnesses were there to your compaint?:
+      <br>
+        <input type="text" name="numwitnesses">
+      <br><br>
+      
+      Is this complaint about an illegal search? (1 yes, 0 no):
+      <br>
+        <input type="text" name="search">
+      <br><br>
+
+      Would this complaint be reviewed by COPA today? (1 yes, 0 no):
+      <br>
+        <input type="text" name="copa_style">
+      <br><br>
+      
+      How many awards have been won by the officer the complaint is against:
+      <br>
+      	<input type="text" name="num_awards">
+      <br><br>
+
+      How many complaints has the officer already received?:
+      <br>
+        <input type="text" name="num_complaints">
+      <br><br>
+      
+      How many existing verbal/physical abuse complaints does the officer have?:
+      <br>
+        <input type="text" name="abuse_ct">
+      <br><br>
+      
+      How many existing civil rights complaints does the officer have?:
+      <br>
+        <input type="text" name="civil_ct">
+      <br><br>
+
+      How many existing operations complaints does the officer have?:
+      <br>
+        <input type="text" name="operations_ct">
+      <br><br>
+
+      What is the age of the officer in years?:
+      <br>
+        <input type="text" name="officer_age">
+      <br>
+
+      What is the time the officer has spent on the force in years?:
+      <br>
+        <input type="text" name="time_on_force">
+      <br>
+
+      Is your complaint made or corroborated by a police officer? (1 yes, 0 no):
+      <br>
+        <input type="text" name="officer_filed">
+      <br>
+    </div>
+
+  <br>
+
+  <button type="submit" class="button">
+    The most likely outcome of your complaint is...
+  </button>
+  </form>
+
+  <br>
+
+  {% if message %}
+  <h2>{{message}}</h2>
+  {% endif %}
+
+</body>
+</html>

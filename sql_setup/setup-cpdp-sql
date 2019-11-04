@@ -1,0 +1,176 @@
+CREATE DATABASE cpdp;
+
+\connect cpdp;
+
+CREATE TABLE outcomes(
+  UID TEXT,
+  complaint_category TEXT,
+  complaint_code TEXT,
+  cr_id TEXT,
+  cv INT,
+  final_finding TEXT,
+  final_outcome TEXT,
+  recc_finding TEXT,
+  recc_outcome TEXT,
+  link_UID TEXT
+);
+
+
+CREATE TABLE complaints(
+  cr_id TEXT,
+  cv INT,
+  incident_date DATE,
+  complaint_date DATE,
+  closed_date DATE,
+  add1 TEXT,
+  add2 TEXT,
+  beat TEXT,
+  city TEXT,
+  full_address TEXT,
+  location TEXT
+);
+
+CREATE TABLE comp_cv23_civ(
+  age FLOAT,
+  birth_year FLOAT,
+  cr_id TEXT,
+  cv INT,
+  gender TEXT,
+  race TEXT
+);
+
+CREATE TABLE comp_cv23_off(
+  cr_id TEXT
+);
+
+CREATE TABLE comp_cv1(
+  cr_id TEXT,
+  officer_or_non TEXT,
+  gender TEXT,
+  birth_year INT,
+  race TEXT
+);
+
+
+CREATE TABLE wit_cv23_off(
+  cv INT,
+  UID TEXT,
+  cr_id TEXT,
+  link_UID TEXT
+);
+
+CREATE TABLE wit_cv3_civ(
+  row_id INT,
+  cr_id TEXT,
+  complaint_date DATE,
+  investigating_agency TEXT,
+  complainant_type TEXT,
+  complainant_subtype TEXT,
+  race TEXT,
+  gender TEXT,
+  birth_year FLOAT
+);
+
+CREATE TABLE wit_cv2_civ(
+  row_id INT,
+  complaints_witnesses_2000_2016_2016_11_ID TEXT,
+  cr_id TEXT,
+  UID TEXT,
+  link_UID TEXT
+);
+
+CREATE TABLE wit_cv1_all(
+  row_id INT,
+  complaints_witnesses_1967_1999_2016_12_ID TEXT,
+  cr_id TEXT,
+  officer_or_non TEXT,
+  star TEXT,
+  birth_year INT
+);
+
+CREATE TABLE investigators_cv23(
+  UID TEXT,
+  appointed_date DATE,
+  assigned_date DATE,
+  birth_year FLOAT,
+  complaints_investigators_2000_2016_2016_11_ID TEXT,
+  complaints_investigators_2000_2018_2018_03_ID TEXT,
+  cr_id TEXT,
+  current_rank TEXT,
+  current_star TEXT,
+  current_unit TEXT,
+  cv INT,
+  first_name TEXT,
+  first_name_NS TEXT,
+  gender TEXT,
+  investigator_type TEXT,
+  last_name TEXT,
+  last_name_NS TEXT,
+  middle_initial TEXT,
+  race TEXT,
+  star TEXT,
+  suffix_name TEXT,
+  investigator_ID TEXT,
+  link_UID TEXT
+);
+
+CREATE TABLE awards(
+  row_id INT,
+  awards_1967_2017_2017_08_ID TEXT,
+  pps_award_detail_id TEXT,
+  award_type TEXT,
+  award_start_date DATE,
+  current_award_status TEXT,
+  award_request_date DATE,
+  award_end_date DATE,
+  rank TEXT,
+  last_promotion_date DATE,
+  requester_full_name TEXT,
+  ceremony_date DATE,
+  tracking_no TEXT,
+  UID TEXT,
+  old_UID TEXT,
+  link_UID TEXT
+ );
+
+CREATE TABLE officers(
+  UID TEXT,
+  first_name TEXT,
+  last_name TEXT,
+  middle_initial TEXT,
+  middle_initial2 TEXT,
+  suffix_name TEXT,
+  birth_year FLOAT,
+  race TEXT,
+  gender TEXT,
+  appointed_date DATE,
+  resignation_date DATE,
+  current_status FLOAT,
+  current_star TEXT,
+  current_unit TEXT,
+  current_rank TEXT,
+  start_date DATE,
+  org_hire_date DATE,
+  profile_count INT,
+  cleaned_rannk TEXT,
+  link_UID TEXT
+ );
+
+
+
+
+
+\copy outcomes FROM 'complaints/complaints-accused.csv' DELIMITER ',' CSV HEADER;
+\copy complaints FROM 'complaints/complaints-complaints.csv' DELIMITER ',' CSV HEADER;
+\copy comp_cv23_civ FROM 'complaints/complaints-complainants.csv' DELIMITER ',' CSV HEADER;
+\copy comp_cv23_off FROM 'complaints/officer-filed-complaints__2017-09.csv' DELIMITER ',' CSV HEADER;
+\copy comp_cv1 FROM 'complaints/complaints-complainants_1967-1999_2016-12_new.csv' DELIMITER ',' CSV HEADER;
+\copy wit_cv23_off FROM 'complaints/complaints-CPD-witnesses.csv' DELIMITER ',' CSV HEADER;
+\copy wit_cv3_civ FROM 'complaints/complaints-civilian-witnesses_2000-2018_2018-03.csv' DELIMITER ',' CSV HEADER;
+\copy wit_cv2_civ FROM 'complaints/complaints-witnesses_2000-2016_2016-11.csv' DELIMITER ',' CSV HEADER;
+\copy wit_cv1_all FROM 'complaints/complaints-witnesses_1967-1999_2016-12.csv' DELIMITER ',' CSV HEADER;
+\copy investigators_cv23 FROM 'complaints/complaints-investigators.csv' DELIMITER ',' CSV HEADER;
+\copy awards FROM 'awards/awards_1967-2017_2017-08.csv' DELIMITER ',' CSV HEADER;
+\copy officers FROM 'profiles/final-profiles.csv' DELIMITER ',' CSV HEADER;
+
+

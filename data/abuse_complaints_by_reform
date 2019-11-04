@@ -1,0 +1,7 @@
+,reform,number_complaint_code,discipline
+1,Before IPRA,All Complaints,0.062729
+2,After IPRA,All Complaints,0.054312
+3,Before IPRA,Verbal Abuse,0.016877637130801686
+4,Before IPRA,Physical Force/Civil Suits,0.03905540417801998
+5,After IPRA,Verbal Abuse,0.06108202443280977
+6,After IPRA,Physical Force/Civil Suits,0.06367571166971867
