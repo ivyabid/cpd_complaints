@@ -1,5 +1,7 @@
 # Investigating Chicago Police Department complaint data
 
+[Project Blog](https://ivyabid.blogspot.com/2019/11/impact-of-reform-on-chicago-police.html)
+
 This project had two major goals, namely:
 - investigate overall rates of discipline in CPD to see if creating IPRA (an independent, but unelected investigatory board comprised largely of former police officers) had any impact on how often police were disciplined
 
